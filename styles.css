@@ -14,25 +14,25 @@
 }
 
 #resultSection {
-    min-width:460px;
+    flex-basis: 75%;
     display:inline;
 }
 
 #cancel {
-    width: 140px;
+    flex-basis: 25%;
 }
 
 #buttonsSection {
     display:flex;
     flex-wrap:wrap;
+    flex-basis:100%;
 }
 
 .btn {
-    min-width:140px;
-    flex:1;
+    flex-basis: 25%;
 }
 
 body *{
-    border: 0.5px solid red;
+    border: 0.5px solid black;
 
     }

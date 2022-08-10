@@ -1,0 +1,38 @@
+* { 
+    box-sizing: border-box; 
+} 
+
+#calculatorWrapper {
+    display:flex;
+    flex-wrap: wrap; /* need this to force other siblings to wrap to other rows (besides first row of results and cancel button) */
+    width:600px;
+}
+
+#topSection {
+    flex: 1;
+    display:flex;
+}
+
+#resultSection {
+    min-width:460px;
+    display:inline;
+}
+
+#cancel {
+    width: 140px;
+}
+
+#buttonsSection {
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.btn {
+    min-width:140px;
+    flex:1;
+}
+
+body *{
+    border: 0.5px solid red;
+
+    }

@@ -6,6 +6,7 @@
     display:flex;
     flex-wrap: wrap; /* need this to force other siblings to wrap to other rows (besides first row of results and cancel button) */
     width:600px;
+    height:600px;
 }
 
 #topSection {
@@ -19,10 +20,7 @@
 #resultSection {
     flex-basis: 75%;
     /* display:inline; */
-}
-
-#cancel {
-    flex-basis: 25%;
+    text-align: right;
 }
 
 #buttonsSection {
@@ -31,8 +29,9 @@
     flex-basis:100%; /* NEED this to enforce the calculator UI*/
 }
 
-.btn {
+.btn, #cancel {
     flex-basis: 25%;
+    background-color: white;
 }
 
 body *{
@@ -49,7 +48,7 @@ The second div within your first container contains the buttons. This is also a 
 
 For each flexbox within the main one, need to specify flex-basis:100%. This makes sure each div's width is the same as the parent container! 
 
-Note also you set the flex-basis of the btn class i.e., the flex items. Lesson learned: you can set the flex basis of both the container and children!
+Note also you set the flex-basis of the btn class i.e., the flex items. Lesson learned: you can set the flex basis of both the container and children! Wait...well, the container here is also a flex-item. NVM. 
 
 The combination of flex-wrap:wrap and everything else together enforces the shape and display of the calculator. Using flex is better than hardcoding the widths of each element. The only spot you would need to change/hard code is the initial width of the calculator itself, with the div with id='calculatorWrapper'
 */

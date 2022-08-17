@@ -1,7 +1,11 @@
-let firstNum =0;
+let displayValue = '';
+let firstNum;
 let secondNum;
 let operation;
 
+let displayDiv = document.getElementById('resultSection');
+let buttonClick = document.querySelectorAll('.number');
+let operationClick = document.querySelectorAll('.operation');   
 
 //ADD
 function add(a, b) {
@@ -42,18 +46,20 @@ function operate(a, operator, b) {
     } 
   };
   
-
 // Create the functions that populate the display when you click the number buttons. Store the ‘display value’ in a variable somewhere.
-let displayDiv = document.getElementById('resultSection');
-let buttonClick = document.querySelectorAll('.number');
 buttonClick.forEach(button => {
     button.addEventListener("mousedown", () => {
         button.style.backgroundColor = "rgb(200,200,200)";
 
-        if (displayDiv.innerText === '0') {
-            displayDiv.innerText = button.innerText;
+        // Resets display value to become empty
+        if (displayValue != '') {
+            displayDiv.textContent = '';
+        };
+
+        if (displayDiv.textContent === '0') {
+            displayDiv.textContent = button.textContent;
         } else {
-            displayDiv.innerText = displayDiv.innerText+button.innerText;
+            displayDiv.textContent = displayDiv.textContent+button.textContent;
         };
     });
 
@@ -61,21 +67,55 @@ buttonClick.forEach(button => {
         button.style.backgroundColor = "white";
     });
 });
-//console.log(displayDivValue);
 
+operationClick.forEach(op => {
+    op.addEventListener('mousedown', () => {
+        op.style.backgroundColor = "rgb(200,200,200)";
+        
+        if (operation === undefined) {
+            operation = op.textContent;
 
+            if (displayValue === '') {
+                displayValue = displayDiv.textContent;
+                console.log('got to line 75' + ' ' + `${displayValue}`);
+            } else {
+                firstNum = displayValue; 
+                secondNum = displayDiv.textContent;
+                displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
+                console.log(`${displayDiv.textContent}`);
+                displayValue = displayDiv.textContent;
+            }
+        } else {
+            firstNum = displayValue; 
+            secondNum = displayDiv.textContent;
+            displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
+            displayValue = displayDiv.textContent;
+            operation = op.textContent; // need to change the current operation
+        };
 
+        
+    });
 
-
+    op.addEventListener("mouseup", () => {
+        op.style.backgroundColor = "white";
+    });
+});
 
 /*
-Strategy: 
-once an operation is hit, store the op somewhere. Also, store the value in the system somewhere. 
+cases:
+
+1) displayValue is empty. So you just entered the first number. so can set firstNum = displayValue. or just change displayValue to keep the first number for now. 
+
+2) displayValue is filled. This means a number has already been acted on. So you need to go ahead and the operation change and return the result. I.e. user entered 5, then pressed the multiply operation, then entered 3, pressed the subtract operation. In which case, we need to first do 5*3 = 15 and show 15 on the screen first. 
 */
 
-//console.log(firstNum === undefined);
 
-let operationClick = document.querySelectorAll('.operation');   
+
+
+
+/* Strategy: once an operation is hit, store the op somewhere. Also, store the value in the system somewhere */
+
+  
 // operationClick.forEach(op => {
 //     op.addEventListener('mousedown', () => {
 

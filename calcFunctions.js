@@ -2,7 +2,8 @@ let displayValue = '';
 let firstNum;
 let secondNum;
 let operation;
-let sum;
+let previousOp;
+
 
 let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
@@ -65,7 +66,7 @@ buttonClick.forEach(button => {
             operation = undefined; 
             displayDiv.textContent = '0';
         }
-        
+
         // Resets display value to become empty
         if (displayValue != '') {
             firstNum = displayValue;
@@ -89,7 +90,7 @@ operationClick.forEach(op => {
     op.addEventListener('mousedown', () => {
         op.style.backgroundColor = "rgb(200,200,200)";
         
-        //For unique case where user divided 0 by 0
+        //For unique case where user divided 0 by 0. Have this code because do not want display to show 'NaN'. Instead, want to essentially "cancel" and reset.
         if (displayDiv.textContent === 'ERROR') {
             displayValue = '';
             firstNum = undefined;
@@ -103,9 +104,6 @@ operationClick.forEach(op => {
 
             if (displayValue === '') {
                 displayValue = displayDiv.textContent;
-                console.log('Line 90');
-                console.log(typeof displayValue);
-                console.log(displayValue);
             } else {
                 secondNum = displayDiv.textContent;
                 displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
@@ -136,11 +134,19 @@ operationClick.forEach(op => {
 equalClick.addEventListener('mousedown', () => {
     equalClick.style.backgroundColor = "rgb(200,200,200)";
 
+    // If user selects equal sign after an arithmetic, do the same operation on the resulting number. Can just change the firstNum to become the current output, and change the textContent.
+    if (displayValue === '' && operation === undefined) {
+        firstNum = displayDiv.textContent;
+        displayDiv.textContent = secondNum;
+        operation = previousOp;
+    }
+
     secondNum = displayDiv.textContent;
     displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
     displayValue = displayDiv.textContent;
 
     displayValue = '';
+    previousOp = operation; 
     operation = undefined;
 
 });
@@ -162,53 +168,3 @@ clearClick.addEventListener('mousedown', () => {
 clearClick.addEventListener('mouseup', () => {
     clearClick.style.backgroundColor = "white";
 });
-
-/*
-cases:
-
-1) displayValue is empty. So you just entered the first number. so can set firstNum = displayValue. or just change displayValue to keep the first number for now. 
-
-2) displayValue is filled. This means a number has already been acted on. So you need to go ahead and the operation change and return the result. I.e. user entered 5, then pressed the multiply operation, then entered 3, pressed the subtract operation. In which case, we need to first do 5*3 = 15 and show 15 on the screen first. 
-*/
-
-
-
-
-
-/* Strategy: once an operation is hit, store the op somewhere. Also, store the value in the system somewhere */
-
-  
-// operationClick.forEach(op => {
-//     op.addEventListener('mousedown', () => {
-
-
-
-
-
-
-
-
-//         if (operation === undefined) {
-//             operation = op.innerText;
-//             firstNum = displayDiv.innerText;
-//         } else {
-//             displayDiv.innerText = operate(add, firstNum, secondNum);
-//         }
-
-
-
-
-
-
-//         operation = op.innerText;
-//         if (firstNum === undefined) {
-//             firstNum = displayDiv.innerText;
-            
-//         } else {
-//             secondNum = displayDiv.innerText;
-//             displayDiv.innerText = operate(add, firstNum, secondNum);
-//         }
-//         console.log(operation);
-
-//     });
-// });

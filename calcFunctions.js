@@ -102,12 +102,18 @@ operationClick.forEach(op => {
 
 // Event listener for equal operation
 equalClick.addEventListener('mousedown', () => {
-    //console.log('yo');
     equalClick.style.backgroundColor = "rgb(200,200,200)";
+
+    secondNum = displayDiv.textContent;
+    displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
+    displayValue = displayDiv.textContent;
+
+    displayValue = '';
+    operation = undefined;
+
 });
 
 equalClick.addEventListener('mouseup', () => {
-    //console.log('eh');
     equalClick.style.backgroundColor = "white";
 });
 

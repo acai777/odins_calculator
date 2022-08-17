@@ -53,6 +53,8 @@ buttonClick.forEach(button => {
 
         // Resets display value to become empty
         if (displayValue != '') {
+            firstNum = displayValue;
+            displayValue = '';
             displayDiv.textContent = '';
         };
 
@@ -86,7 +88,7 @@ operationClick.forEach(op => {
                 displayValue = displayDiv.textContent;
             }
         } else {
-            firstNum = displayValue; 
+            //firstNum = displayValue; 
             secondNum = displayDiv.textContent;
             displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
             displayValue = displayDiv.textContent;

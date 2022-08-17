@@ -57,13 +57,20 @@ buttonClick.forEach(button => {
     button.addEventListener("mousedown", () => {
         button.style.backgroundColor = "rgb(200,200,200)";
 
+        //For unique case where user divided 0 by 0
+        if (displayDiv.textContent === 'ERROR') {
+            displayValue = '';
+            firstNum = undefined;
+            secondNum = undefined;
+            operation = undefined; 
+            displayDiv.textContent = '0';
+        }
+        
         // Resets display value to become empty
         if (displayValue != '') {
             firstNum = displayValue;
             displayValue = '';
             displayDiv.textContent = '';
-            console.log('HELP');
-            console.log(firstNum);
         };
 
         if (displayDiv.textContent === '0') {
@@ -82,6 +89,15 @@ operationClick.forEach(op => {
     op.addEventListener('mousedown', () => {
         op.style.backgroundColor = "rgb(200,200,200)";
         
+        //For unique case where user divided 0 by 0
+        if (displayDiv.textContent === 'ERROR') {
+            displayValue = '';
+            firstNum = undefined;
+            secondNum = undefined;
+            operation = undefined; 
+            displayDiv.textContent = '0';
+        }
+
         if (operation === undefined) {
             operation = op.textContent;
 
@@ -101,12 +117,9 @@ operationClick.forEach(op => {
             if (firstNum === undefined) {
                 firstNum = 0;
             }
-            console.log('CHECK HERE');
-            console.log(firstNum);
-            console.log(Number(firstNum));
+
             secondNum = displayDiv.textContent;
             displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
-            console.log(operate(Number(firstNum), operation, Number(secondNum)));
             displayValue = displayDiv.textContent;
             operation = op.textContent; // need to change the current operation
         };

@@ -2,11 +2,13 @@ let displayValue = '';
 let firstNum;
 let secondNum;
 let operation;
+let sum;
 
 let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
 let equalClick = document.querySelectorAll('.equalOp')[0];
+let clearClick = document.querySelector('#cancel'); // addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
 
 //ADD
 function add(a, b) {
@@ -25,6 +27,9 @@ function multiply(a, b) {
 
 //DIVIDE 
 function divide(a, b) {
+    if (a == 0 && b == 0) {
+        return 'ERROR';
+    }
     return a/b; 
 };
 
@@ -57,6 +62,8 @@ buttonClick.forEach(button => {
             firstNum = displayValue;
             displayValue = '';
             displayDiv.textContent = '';
+            console.log('HELP');
+            console.log(firstNum);
         };
 
         if (displayDiv.textContent === '0') {
@@ -80,14 +87,26 @@ operationClick.forEach(op => {
 
             if (displayValue === '') {
                 displayValue = displayDiv.textContent;
+                console.log('Line 90');
+                console.log(typeof displayValue);
+                console.log(displayValue);
             } else {
                 secondNum = displayDiv.textContent;
                 displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
                 displayValue = displayDiv.textContent;
             }
         } else {
+
+            // Need this for the odd situation where user presses the divide sign >=2 times. 
+            if (firstNum === undefined) {
+                firstNum = 0;
+            }
+            console.log('CHECK HERE');
+            console.log(firstNum);
+            console.log(Number(firstNum));
             secondNum = displayDiv.textContent;
             displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
+            console.log(operate(Number(firstNum), operation, Number(secondNum)));
             displayValue = displayDiv.textContent;
             operation = op.textContent; // need to change the current operation
         };
@@ -117,8 +136,19 @@ equalClick.addEventListener('mouseup', () => {
     equalClick.style.backgroundColor = "white";
 });
 
-console.log(typeof equalClick);
+// Clear button event handler
+clearClick.addEventListener('mousedown', () => {
+    clearClick.style.backgroundColor = "rgb(200,200,200)";
+    displayValue = '';
+    firstNum = undefined;
+    secondNum = undefined;
+    operation = undefined; 
+    displayDiv.textContent = '0';
+});
 
+clearClick.addEventListener('mouseup', () => {
+    clearClick.style.backgroundColor = "white";
+});
 
 /*
 cases:

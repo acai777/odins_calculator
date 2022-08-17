@@ -79,16 +79,12 @@ operationClick.forEach(op => {
 
             if (displayValue === '') {
                 displayValue = displayDiv.textContent;
-                console.log('got to line 75' + ' ' + `${displayValue}`);
             } else {
-                firstNum = displayValue; 
                 secondNum = displayDiv.textContent;
                 displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
-                console.log(`${displayDiv.textContent}`);
                 displayValue = displayDiv.textContent;
             }
         } else {
-            //firstNum = displayValue; 
             secondNum = displayDiv.textContent;
             displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
             displayValue = displayDiv.textContent;

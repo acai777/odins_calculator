@@ -6,6 +6,7 @@ let operation;
 let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
+let equalClick = document.querySelectorAll('.equalOp')[0];
 
 //ADD
 function add(a, b) {
@@ -98,6 +99,20 @@ operationClick.forEach(op => {
         op.style.backgroundColor = "white";
     });
 });
+
+// Event listener for equal operation
+equalClick.addEventListener('mousedown', () => {
+    //console.log('yo');
+    equalClick.style.backgroundColor = "rgb(200,200,200)";
+});
+
+equalClick.addEventListener('mouseup', () => {
+    //console.log('eh');
+    equalClick.style.backgroundColor = "white";
+});
+
+console.log(typeof equalClick);
+
 
 /*
 cases:

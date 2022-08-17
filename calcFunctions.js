@@ -141,6 +141,11 @@ equalClick.addEventListener('mousedown', () => {
         operation = previousOp;
     }
 
+    // If user selects equal sign BEFORE anything is pushed, operation will be undefined. If want display to still be 0, make it so that firstNum and secondNum are both = 0. One solution is to set the operation to '+', so we show 0+0 = 0, which is what we want.
+    if (secondNum === undefined) {
+        operation = '+';
+    }
+
     secondNum = displayDiv.textContent;
     displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
     displayValue = displayDiv.textContent;

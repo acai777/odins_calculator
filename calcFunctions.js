@@ -2,15 +2,15 @@ let displayValue = '';
 let firstNum;
 let secondNum;
 let operation;
-let previousOp;
+let previousPressedButton;
 
 
 let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
 let equalClick = document.querySelectorAll('.equalOp')[0];
-let clearClick = document.querySelector('.cancel'); // addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
-let signClick = document.querySelector('.sign');
+let clearClick = document.querySelector('.cancel'); 
+let signClick = document.querySelector('.sign'); //addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
 
 //ADD
 function add(a, b) {
@@ -58,6 +58,7 @@ function operate(a, operator, b) {
 buttonClick.forEach(button => {
     button.addEventListener("mousedown", () => {
         button.style.backgroundColor = "rgb(200,200,200)";
+        previousPressedButton = button.textContent; // need to specify that the previous button pressed is this number. 
 
         //For unique case where user divided 0 by 0
         if (displayDiv.textContent === 'ERROR') {
@@ -122,14 +123,25 @@ operationClick.forEach(op => {
                 firstNum = 0;
             }
 
+            // For the situation if the user selects the same operation twice, just perform the same operation where both inputs are equal to what is currently displayed. Because secondNum starts off undefined, if you do not already an output in the display, you would NOT want to change firstNum to be the current display output. Hence why we also need to specify secondNum != undefined. 
+            if (previousPressedButton === operation && secondNum != undefined) {
+                firstNum = displayDiv.textContent;
+            }
+
+            // For situation if previous and current button pressed are different operations, want to do nothing. Just return
+            if (['+', '-', '/', '*'].includes(previousPressedButton) && ['+', '-', '/', '*'].includes(op.textContent) && previousPressedButton != op.textContent) {
+                 // console.log('YOU ARE CRAZY');
+                 return;
+            }
+
             secondNum = displayDiv.textContent;
             displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
             displayValue = displayDiv.textContent;
             operation = op.textContent; // need to change the current operation
         };
 
-        previousOp = operation;
-        
+        previousPressedButton = operation;
+
         
     });
 
@@ -146,12 +158,12 @@ equalClick.addEventListener('mousedown', () => {
     if (displayValue === '' && operation === undefined) {
         firstNum = displayDiv.textContent;
         displayDiv.textContent = secondNum;
-        operation = previousOp;
+        operation = previousPressedButton;
     }
 
     // If user selects equal sign BEFORE anything is pushed, operation will be undefined. If want display to still be 0, make it so that firstNum and secondNum are both = 0. One solution is to set the operation to '+', so we show 0+0 = 0, which is what we want.
-    if (secondNum === undefined && previousOp === undefined) {
-        operation = '+';
+    if (secondNum === undefined && previousPressedButton === undefined) {
+        operation = previousOp;
     }
 
     secondNum = displayDiv.textContent;
@@ -159,7 +171,7 @@ equalClick.addEventListener('mousedown', () => {
     displayValue = displayDiv.textContent;
 
     displayValue = '';
-    previousOp = operation; 
+    previousPressedButton = operation; 
     operation = undefined;
 
 });

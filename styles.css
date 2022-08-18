@@ -26,7 +26,7 @@
 }
 
 .btn, #cancel {
-    flex-basis: 25%;
+    flex-basis: 24.5%;
 }
 
 .btn-rowWide {
@@ -34,7 +34,7 @@
 }
 
 .btn-wide {
-    flex-basis: 50%;
+    flex-basis: 49%;
 }
 
 button, div {

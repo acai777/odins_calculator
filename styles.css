@@ -6,7 +6,7 @@
     display:flex;
     flex-wrap: wrap; /* need this to force other siblings to wrap to other rows (besides first row of results and cancel button) */
     width:400px;
-    height:400px;
+    height:550px;
     position: absolute;
     top: 50%;
     left: 50%;

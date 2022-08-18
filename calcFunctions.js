@@ -11,9 +11,6 @@ let operationClick = document.querySelectorAll('.operation');
 let equalClick = document.querySelectorAll('.equalOp')[0];
 let clearClick = document.querySelector('.cancel'); // addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
 let signClick = document.querySelector('.sign');
-console.log(signClick);
-
-
 
 //ADD
 function add(a, b) {
@@ -69,6 +66,11 @@ buttonClick.forEach(button => {
             secondNum = undefined;
             operation = undefined; 
             displayDiv.textContent = '0';
+        }
+
+        // For case if user tries to click on the "." button but the displayed number already has a period. In which case, do not add the period. Just return here
+        if (displayDiv.textContent.includes(".") && button.textContent === '.') {
+            return;
         }
 
         // Resets display value to become empty

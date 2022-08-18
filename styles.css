@@ -5,8 +5,8 @@
 #calculatorWrapper {
     display:flex;
     flex-wrap: wrap; /* need this to force other siblings to wrap to other rows (besides first row of results and cancel button) */
-    width:600px;
-    height:600px;
+    width:400px;
+    height:400px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -14,17 +14,12 @@
     transform: translate(-50%, -50%);
 }
 
-#topSection {
+#resultSection {
     flex-grow:1;
     flex-shrink:1;
     flex-basis:100%;
+    /* display:flex; */
     /* flex:1; is equivalent to flex-grow:1; flex-shrink:1; flex-basis:0;*/
-    display:flex;
-}
-
-#resultSection {
-    flex-basis: 75%;
-    /* display:inline; */
     text-align: right;
 }
 
@@ -39,6 +34,10 @@
     background-color: white;
 }
 
+.btn-wide {
+    flex-basis: 50%;
+    background-color: white;
+}
 body *{
     border: 0.5px solid black;
 

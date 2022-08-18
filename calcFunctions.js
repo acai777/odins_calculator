@@ -9,7 +9,11 @@ let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
 let equalClick = document.querySelectorAll('.equalOp')[0];
-let clearClick = document.querySelector('#cancel'); // addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
+let clearClick = document.querySelector('.cancel'); // addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
+let signClick = document.querySelector('.sign');
+console.log(signClick);
+
+
 
 //ADD
 function add(a, b) {
@@ -172,4 +176,18 @@ clearClick.addEventListener('mousedown', () => {
 
 clearClick.addEventListener('mouseup', () => {
     clearClick.style.backgroundColor = "white";
+});
+
+// +/- button event handler 
+signClick.addEventListener('mousedown', () => {
+    console.log(displayDiv.textContent[0]);
+    if (displayDiv.textContent == 0) {
+        return;
+    };
+
+    if (displayDiv.textContent[0] == '-') {
+        displayDiv.textContent= displayDiv.textContent.replace(/-/, "");
+    } else {
+        displayDiv.textContent = '-' + displayDiv.textContent;
+    };
 });

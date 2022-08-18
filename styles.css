@@ -15,33 +15,31 @@
 }
 
 #resultSection {
-    flex-grow:1;
-    flex-shrink:1;
-    flex-basis:100%;
-    /* display:flex; */
-    /* flex:1; is equivalent to flex-grow:1; flex-shrink:1; flex-basis:0;*/
     text-align: right;
+    /* flex:1; is equivalent to flex-grow:1; flex-shrink:1; flex-basis:0;*/
 }
 
-#buttonsSection {
-    display:flex;
-    flex-wrap:wrap;
-    flex-basis:100%; /* NEED this to enforce the calculator UI*/
+.btn, .btn-rowWide, .btn-wide {
+    flex-grow:1;
+    flex-shrink:1;
+    background-color: white;
 }
 
 .btn, #cancel {
     flex-basis: 25%;
-    background-color: white;
+}
+
+.btn-rowWide {
+    flex-basis: 100%;
 }
 
 .btn-wide {
     flex-basis: 50%;
-    background-color: white;
 }
+
 body *{
     border: 0.5px solid black;
-
-    }
+}
 
 /*
 LOGIC TO UNDERSTAND YOUR CALCULATOR STRUCTURE (SELF NOTE): you have an overarching flexbox. This is indicated by the div with id='calculatorWrapper'. For each div/element you create within this container, because of how you've specified the flex-grow/shrink options (either by default, or directly specifying), each div will take up equal spacing. 

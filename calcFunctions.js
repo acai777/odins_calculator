@@ -4,7 +4,6 @@ let secondNum;
 let operation;
 let previousPressedButton;
 
-
 let displayDiv = document.getElementById('resultSection');
 let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
@@ -196,7 +195,6 @@ clearClick.addEventListener('mouseup', () => {
 
 // +/- button event handler 
 signClick.addEventListener('mousedown', () => {
-    console.log(displayDiv.textContent[0]);
     if (displayDiv.textContent == 0) {
         return;
     };

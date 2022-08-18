@@ -7,6 +7,11 @@
     flex-wrap: wrap; /* need this to force other siblings to wrap to other rows (besides first row of results and cancel button) */
     width:600px;
     height:600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 #topSection {

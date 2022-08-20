@@ -104,7 +104,7 @@ buttonClick.forEach(button => {
 
 operationClick.forEach(op => {
     op.addEventListener('mousedown', () => {
-        op.style.backgroundColor = "rgb(200,200,200)";
+        op.style.filter = "brightness(120%)";
         
         //For unique case where user divided 0 by 0. Have this code because do not want display to show 'NaN'. Instead, want to essentially "cancel" and reset.
         if (displayDiv.textContent === 'ERROR') {
@@ -153,13 +153,13 @@ operationClick.forEach(op => {
     });
 
     op.addEventListener("mouseup", () => {
-        op.style.backgroundColor = "white";
+        op.style.filter = "brightness(100%)";
     });
 });
 
 // Event listener for equal operation
 equalClick.addEventListener('mousedown', () => {
-    equalClick.style.backgroundColor = "rgb(200,200,200)";
+    equalClick.style.filter = "brightness(120%)";
 
     // If user selects equal sign after an arithmetic, do the same operation on the resulting number. Can just change the firstNum to become the current output, and change the textContent.
     if (displayValue === '' && operation === undefined) {
@@ -185,7 +185,7 @@ equalClick.addEventListener('mousedown', () => {
 });
 
 equalClick.addEventListener('mouseup', () => {
-    equalClick.style.backgroundColor = "white";
+    equalClick.style.filter = "brightness(100%)";
 });
 
 // Clear button event handler

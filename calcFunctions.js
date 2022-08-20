@@ -85,6 +85,12 @@ buttonClick.forEach(button => {
         if (displayDiv.textContent === '0') {
             displayDiv.textContent = button.textContent;
         } else {
+
+            // Don't want the number to be too long and exceed calculator width. Set arbitrary max of 15 digits for now 
+            if (displayDiv.textContent.length >= 15) {
+                return; 
+            }
+    
             displayDiv.textContent = displayDiv.textContent+button.textContent;
         };
     });

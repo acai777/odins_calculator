@@ -67,16 +67,3 @@ button {
     border-radius: 0.5rem;
     margin:1px;
 }
-/*
-LOGIC TO UNDERSTAND YOUR CALCULATOR STRUCTURE (SELF NOTE): you have an overarching flexbox. This is indicated by the div with id='calculatorWrapper'. For each div/element you create within this container, because of how you've specified the flex-grow/shrink options (either by default, or directly specifying), each div will take up equal spacing. 
-
-Hence why for the busttonsSection div, you need to have flex-basis:100% to force it to have a starting width of the calculatorWrapper parent. If not, and you have something smaller, then the buttons section will look out of place. 
-
-The second div within your first container contains the buttons. This is also a flexbox itself. Similarly, the topSection div is also a flexbox; you essentially have two flexboxes within a flexbox. 
-
-For each flexbox within the main one, need to specify flex-basis:100%. This makes sure each div's width is the same as the parent container! 
-
-Note also you set the flex-basis of the btn class i.e., the flex items. Lesson learned: you can set the flex basis of both the container and children! Wait...well, the container here is also a flex-item. NVM. 
-
-The combination of flex-wrap:wrap and everything else together enforces the shape and display of the calculator. Using flex is better than hardcoding the widths of each element. The only spot you would need to change/hard code is the initial width of the calculator itself, with the div with id='calculatorWrapper'
-*/

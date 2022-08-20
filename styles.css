@@ -14,6 +14,8 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    background-color: rgb(35, 36, 35);
+    border: 8px solid rgb(35, 36, 35);
 }
 
 #resultSection {
@@ -24,6 +26,7 @@
     padding-right: 0.5rem;
     font-size: 2rem;
     background-color: rgb(162, 168, 163);
+    border: 5px solid black;
 }
 
 .btn, .btn-rowWide, .btn-wide {
@@ -33,7 +36,7 @@
 }
 
 .btn, .cancel {
-    flex-basis: 25%;
+    flex-basis: 24%;
 }
 
 .btn-rowWide {
@@ -41,7 +44,7 @@
 }
 
 .btn-wide {
-    flex-basis: 50%;
+    flex-basis: 49%;
 }
 
 button, div {
@@ -58,6 +61,11 @@ button, div {
 
 .number, .btn-wide {
     background-color: rgb(9, 237, 47);
+}
+
+button {
+    border-radius: 0.5rem;
+    margin:1px;
 }
 /*
 LOGIC TO UNDERSTAND YOUR CALCULATOR STRUCTURE (SELF NOTE): you have an overarching flexbox. This is indicated by the div with id='calculatorWrapper'. For each div/element you create within this container, because of how you've specified the flex-grow/shrink options (either by default, or directly specifying), each div will take up equal spacing. 

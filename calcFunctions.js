@@ -60,7 +60,7 @@ function operate(a, operator, b) {
 // Create the functions that populate the display when you click the number buttons. Store the ‘display value’ in a variable somewhere.
 buttonClick.forEach(button => {
     button.addEventListener("mousedown", () => {
-        button.style.backgroundColor = "rgb(200,200,200)";
+        button.style.filter = "brightness(120%)";
         previousPressedButton = button.textContent; // need to specify that the previous button pressed is this number. 
 
         //For unique case where user divided 0 by 0
@@ -98,7 +98,7 @@ buttonClick.forEach(button => {
     });
 
     button.addEventListener("mouseup", () => {
-        button.style.backgroundColor = "white";
+        button.style.filter = "brightness(100%)";
     });
 });
 
@@ -190,7 +190,7 @@ equalClick.addEventListener('mouseup', () => {
 
 // Clear button event handler
 clearClick.addEventListener('mousedown', () => {
-    clearClick.style.backgroundColor = "rgb(200,200,200)";
+    clearClick.style.filter = "brightness(120%)";
     displayValue = '';
     firstNum = undefined;
     secondNum = undefined;
@@ -199,11 +199,14 @@ clearClick.addEventListener('mousedown', () => {
 });
 
 clearClick.addEventListener('mouseup', () => {
-    clearClick.style.backgroundColor = "white";
+    clearClick.style.filter = "brightness(100%)";
 });
 
 // +/- button event handler 
 signClick.addEventListener('mousedown', () => {
+
+    signClick.style.filter = "brightness(120%)";
+
     if (displayDiv.textContent == 0) {
         return;
     };
@@ -215,12 +218,16 @@ signClick.addEventListener('mousedown', () => {
     };
 });
 
+signClick.addEventListener('mouseup', () => {
+    signClick.style.filter = "brightness(100%)";
+});
+
 // Event listener for percent operation
 percentClick.addEventListener('mousedown', () => {
     displayDiv.textContent = displayDiv.textContent / 100; 
-    percentClick.style.backgroundColor = "rgb(200,200,200)";
+    percentClick.style.filter = "brightness(120%)";
 });
 
 percentClick.addEventListener('mouseup', () => {
-    percentClick.style.backgroundColor = "white";
+    percentClick.style.filter = "brightness(100%)";
 });

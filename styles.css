@@ -23,6 +23,7 @@
     min-width: 0;
     padding-right: 0.5rem;
     font-size: 2rem;
+    background-color: rgb(162, 168, 163);
 }
 
 .btn, .btn-rowWide, .btn-wide {
@@ -48,10 +49,16 @@ button, div {
 }
 
 .equalOp, .operation {
-    background-color: rgb(162,168,50);
+    background-color: rgb(237, 169, 9);
 }
 
+.cancel, .sign, .percent {
+    background-color: rgb(9, 89, 237);
+}
 
+.number, .btn-wide {
+    background-color: rgb(9, 237, 47);
+}
 /*
 LOGIC TO UNDERSTAND YOUR CALCULATOR STRUCTURE (SELF NOTE): you have an overarching flexbox. This is indicated by the div with id='calculatorWrapper'. For each div/element you create within this container, because of how you've specified the flex-grow/shrink options (either by default, or directly specifying), each div will take up equal spacing. 
 

@@ -9,7 +9,9 @@ let buttonClick = document.querySelectorAll('.number');
 let operationClick = document.querySelectorAll('.operation');   
 let equalClick = document.querySelectorAll('.equalOp')[0];
 let clearClick = document.querySelector('.cancel'); 
-let signClick = document.querySelector('.sign'); //addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
+let signClick = document.querySelector('.sign'); 
+let percentClick = document.querySelector('.percent');
+//addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
 
 //ADD
 function add(a, b) {
@@ -204,4 +206,14 @@ signClick.addEventListener('mousedown', () => {
     } else {
         displayDiv.textContent = '-' + displayDiv.textContent;
     };
+});
+
+// Event listener for percent operation
+percentClick.addEventListener('mousedown', () => {
+    displayDiv.textContent = displayDiv.textContent / 100; 
+    percentClick.style.backgroundColor = "rgb(200,200,200)";
+});
+
+percentClick.addEventListener('mouseup', () => {
+    percentClick.style.backgroundColor = "white";
 });

@@ -175,6 +175,15 @@ equalClick.addEventListener('mousedown', () => {
     }
 
     secondNum = displayDiv.textContent;
+
+    // For case if user presses a number and then an equal sign, result will be undefined and the screen will display an empty string. Want to instead display the number already selected.
+    if (operate(Number(firstNum), operation, Number(secondNum)) == undefined) {
+        displayDiv.textContent = firstNum;
+        previousPressedButton = operation; 
+        operation = undefined;
+        return;
+    };
+    
     displayDiv.textContent = operate(Number(firstNum), operation, Number(secondNum));
     displayValue = displayDiv.textContent;
 

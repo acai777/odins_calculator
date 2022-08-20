@@ -13,6 +13,8 @@ let signClick = document.querySelector('.sign');
 let percentClick = document.querySelector('.percent');
 //addEventListener does not work on JS objects, only on HTML elements and any other DOM object. 
 
+let OPERATIONCOLOR = "rgb(162,168,50)";
+
 //ADD
 function add(a, b) {
     return a+b;
@@ -148,8 +150,6 @@ operationClick.forEach(op => {
         };
 
         previousPressedButton = operation;
-
-        
     });
 
     op.addEventListener("mouseup", () => {
@@ -170,7 +170,8 @@ equalClick.addEventListener('mousedown', () => {
 
     // If user selects equal sign BEFORE anything is pushed, operation will be undefined. If want display to still be 0, make it so that firstNum and secondNum are both = 0. One solution is to set the operation to '+', so we show 0+0 = 0, which is what we want.
     if (secondNum === undefined && previousPressedButton === undefined) {
-        operation = previousOp;
+        operation = previousPressedButton; 
+        //operation = previousOp;
     }
 
     secondNum = displayDiv.textContent;

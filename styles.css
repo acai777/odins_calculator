@@ -1,5 +1,7 @@
 * { 
     box-sizing: border-box; 
+    margin:0;
+    padding:0;
 } 
 
 #calculatorWrapper {
@@ -17,6 +19,8 @@
 #resultSection {
     text-align: right;
     /* flex:1; is equivalent to flex-grow:1; flex-shrink:1; flex-basis:0;*/
+    padding-right: 0.5rem;
+    font-size: 2rem;
 }
 
 .btn, .btn-rowWide, .btn-wide {
@@ -26,7 +30,7 @@
 }
 
 .btn, #cancel {
-    flex-basis: 24.5%;
+    flex-basis: 25%;
 }
 
 .btn-rowWide {
@@ -34,12 +38,12 @@
 }
 
 .btn-wide {
-    flex-basis: 49%;
+    flex-basis: 50%;
 }
 
 button, div {
     border: 0.5px solid black;
-    margin:0;
+    /* margin:0; */
 }
 
 /*
